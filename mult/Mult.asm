@@ -8,7 +8,8 @@
 
 //pseudo code:
      // n=R1
-     // R2=R0
+     // R2=0
+     // if(R0=0 OR R1=0) jump to end
      // (loop) for i-R1>=0 jump to end
      // R2= R2+ R1
      //(end loop)
