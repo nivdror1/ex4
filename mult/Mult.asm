@@ -22,22 +22,38 @@ M= D
 @R2 //initialise R2 as zero
 M=0
 
-@R0 //set R2 as R0
+@R0 //check if R0 is zero
 D=M
-@R2
+@END
+D;JEQ
+
+@R1 //check if R1 is zero
+D=M
+@END
+D;JEQ
+
+@R0 //set sum as R0
+D=M
+@sum
 M=D
 
 (LOOP) // the for condition (i>=0)
 @n
 M=M-1 // subtract 1 from n
 D=M
-@END
+@END_LOOP
 D;JLE //jump to the end
 
-@R0 // R2=R2+R1
+@R0 // sum=sum+R1
+D=M
+@sum
+M=D+M
+
+(END_LOOP)
+@sum
 D=M
 @R2
-M=D+M
+M=D
 
 @LOOP
 0;JMP //go to the  beginning loop
