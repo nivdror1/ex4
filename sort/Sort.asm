@@ -26,8 +26,10 @@ D=M
 M=D
 
 (OUTER_LOOP)
+@n
+D=M
 @END_OUTER_LOOP//outer loop
-D;JEQ // A for loop over the array
+D;JLE // A for loop over the array
 
 
 @n //set k as the current n
@@ -47,7 +49,7 @@ M=D
 
 (INNER_LOOP)
 @k
-D=M
+D=M-1
 @END_INNER_LOOP
 D;JLE
 
@@ -61,7 +63,7 @@ M=D
 A=M
 D=M
 @temp_arr
-D=M-D
+D=D-M
 @END_IF
 D;JLE
 
@@ -110,6 +112,7 @@ M=D
 0;JMP
 
 (END_OUTER_LOOP)
+(END)
 @END
 0;JMP
 
