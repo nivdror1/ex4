@@ -74,7 +74,7 @@ D;JLE
 A=M
 D=M
 @temp
-M=D //temp contains next
+M=D //temp contains next_address
 @cur_address
 A=M
 D=M
@@ -89,25 +89,25 @@ M=D //next_address->cur_address
 (END_IF)
 
 @k
-M=M-1
+M=M-1 //decrease k by 1
 
 @cur_address
-M=M+1
+M=M+1 //advance cur_address
 
 @next_address
-M=M+1
+M=M+1 //advance next_address
 
 
 @INNER_LOOP
-0;JMP
+0;JMP //the end of the inner loop
 
 (END_INNER_LOOP)
 
 @n
-M=M-1
+M=M-1 //decrease m by 1
 
 @OUTER_LOOP
-0;JMP
+0;JMP //the end of the outer loop
 
 (END_OUTER_LOOP)
 
