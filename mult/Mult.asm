@@ -50,15 +50,16 @@ D=M
 @sum
 M=D+M
 
+@LOOP
+0;JMP //go to the  beginning loop
+
 (END_LOOP)
 @sum
 D=M
 @R2
 M=D
 
-@LOOP
-0;JMP //go to the  beginning loop
-
 (END)
+@END
 0;JMP //infinite loop
 

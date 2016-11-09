@@ -25,22 +25,25 @@ D=M
 @n
 M=D
 
-@OUTER_LOOP
+@OUTER_LOOP//outer loop
 M;JEQ // A for loop over the array
 
-//@i //set i
-//M=0
 
 @n //set k as the current n
 D=M
 @k
 M=D
 
-@INNER_LOOP
+@2048
+D=M //the location on the heap
+@switch
+M=D
+
+(INNER_LOOP)
 M;JLE
 
-@switch
-A=2048-16383 //the location on the heap
+
+@2048
 A=A+1
 D=M
 @address //assign address
@@ -53,24 +56,46 @@ D=M
 @next
 D=M-D
 @END_IF
-D;JLE
+D;JGE
 
 @next // switch the values
 D=M
-@address
-A=M
+@temp
+M=D
+@switch
+D=M
+@next
+M=D
+@temp
+D=M
+@switch
 M=D
 (END_IF)
 
 @K
 M=M-1
 
+@switch
+A=A+1
+@next
+A=A+1
+
+
 (INNER_LOOP)
+0;JMP
 
 @n
 M=M-1
-//TODO reset the R14 or switch
+
+@R14 //reset switch as  R14 (the start of the array)
+D=M
+@switch
+M=D
 (OUTER_LOOP)
+0;JMP
+
+@END
+0;JMP
 
 
 
