@@ -25,8 +25,9 @@ D=M
 @n
 M=D
 
-@OUTER_LOOP//outer loop
-M;JEQ // A for loop over the array
+(OUTER_LOOP)
+@END_OUTER_LOOP//outer loop
+D;JEQ // A for loop over the array
 
 
 @n //set k as the current n
@@ -34,55 +35,69 @@ D=M
 @k
 M=D
 
-@2048
-D=M //the location on the heap
+
+@R14 //set switch
+D=M
 @switch
 M=D
+D=D+1 // set next
+@next
+M=D
+
 
 (INNER_LOOP)
-M;JLE
-
-
-@2048
-A=A+1
+@k
 D=M
-@address //assign address
-M=A
-@next //assign next
-M=D
+@END_INNER_LOOP
+D;JLE
+
 
 @switch //if condition that continue if the switch is bigger than next
+A=M
 D=M
+@temp_arr
+M=D
 @next
+A=M
+D=M
+@temp_arr
 D=M-D
 @END_IF
-D;JGE
+D;JLE
 
-@next // switch the values
+// switch the values
+@next
+A=M
 D=M
 @temp
-M=D
+M=D //temp contains next
 @switch
+A=M
 D=M
 @next
-M=D
+A=M
+M=D  //switch->next
 @temp
 D=M
 @switch
-M=D
+A=M
+M=D //next->switch
 (END_IF)
 
-@K
+@k
 M=M-1
 
 @switch
-A=A+1
+M=M+1
+
 @next
-A=A+1
+M=M+1
 
 
-(INNER_LOOP)
+@INNER_LOOP
 0;JMP
+
+(END_INNER_LOOP)
 
 @n
 M=M-1
@@ -91,9 +106,10 @@ M=M-1
 D=M
 @switch
 M=D
-(OUTER_LOOP)
+@OUTER_LOOP
 0;JMP
 
+(END_OUTER_LOOP)
 @END
 0;JMP
 
