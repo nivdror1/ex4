@@ -10,8 +10,9 @@
      // n=R1
      // R2=0
      // if(R0=0 OR R1=0) jump to end
+     // set sum as R0
      // (loop) for i-R1>=0 jump to end
-     // R2= R2+ R1
+     // R2= sum + R1
      //(end loop)
      //(INFINITE LOOP)
 
@@ -54,7 +55,8 @@ M=D+M
 0;JMP //go to the  beginning loop
 
 (END_LOOP)
-@sum
+
+@sum //set R2 as sum
 D=M
 @R2
 M=D
