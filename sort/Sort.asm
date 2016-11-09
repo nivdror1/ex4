@@ -15,10 +15,10 @@
   //set switch as R14
   //end loop
 
-@R14 //set switch as R14
-D=M
-@switch
-M=D
+@R15 // check if the input of the array length is less or equal to one
+D=M-1
+@END
+D;JLE
 
 @R15 //set n as R15
 D=M
