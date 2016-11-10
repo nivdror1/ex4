@@ -11,6 +11,27 @@
 // "white" in every pixel;
 // the screen should remain fully clear as long as no key is pressed.
 
+//implementation:
+// initiate var 'black = 0b1111111111111111'
+// initiate var state - for current screen state
+// (START)
+// read keyboard
+// if not pressed - jemp to WHITE label
+// (BLACK)
+// if screen black already - jump to (START)
+// set the screen to black:
+//      for i = 16384:24384
+//          ram[i] = black
+// jump to (START)
+// (WHITE)
+// if screen white already - jump to (START)
+// clear the screen to white:
+//      for i = 16384:24384
+//          ram[i] = 0
+// jump to (START)
+
+
+
 // Put your code here.
 
 
@@ -75,7 +96,7 @@ M = D
 A = M
 D = A   // D = i
 
-@24384  // A = last pixel index
+@24576  // A = last pixel index
 
 // check loop condition
 D = D - A
@@ -127,7 +148,7 @@ M = D
 A = M
 D = A   // D = i
 
-@24384  // A = last pixel index
+@24576  // A = last pixel index
 
 // check loop condition
 D = D - A
