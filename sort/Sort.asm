@@ -1,5 +1,5 @@
 //input: R14 - the address of the start of the array
-         R15 - the length of the array
+//         R15 - the length of the array
 //output: sort the array in descending order.
 // (R14, R15 refer to RAM[14], and RAM[15], respectively.)
 
